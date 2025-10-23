@@ -1465,6 +1465,7 @@ const TestData = {
 function App() {
   const [weatherData, setWeatherData] = useState("");
   const [loading, setLoading] = useState(true);
+  const cities = ["hanoi", "paris", "new york", "seoul"];
   const getCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -1496,10 +1497,10 @@ function App() {
   return loading ? (
     "loading"
   ) : (
-    <div >
+    <div>
       <div className="container">
         <WeatherBox />
-        <WeatherButton />
+          <WeatherButton cities={cities} />
       </div>
     </div>
   );
