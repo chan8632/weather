@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./App.css";
 const TestData = {
   lat: 37.7192,
   lon: 126.7466,
@@ -1464,11 +1464,19 @@ function App() {
   const [weatherData, setWeatherData] = useState("");
   const [loading, setLoading] = useState(true);
   const getCurrentLocation = () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      getWeatherByCurrentLocation(latitude, longitude);
-    });
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        getWeatherByCurrentLocation(latitude, longitude);
+      },
+      (error) => {
+        // 실패 시 (권한 거부, API 오류 등)
+        console.error("Geolocation 오류:", error);
+        // 오류가 발생해도 테스트 데이터를 사용하도록 처리
+        getWeatherByCurrentLocation(null, null); // 또는 다른 기본값 처리
+      }
+    );
   };
   const getWeatherByCurrentLocation = async (latitude, longitude) => {
     // const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=d909c7f791a049ea70613e9382509195`;
@@ -1489,11 +1497,20 @@ function App() {
     <div className="container">
       <div className="weatherDashboard">
         <div className="timezone">{weatherData.timezone}</div>
-        <div className="c">{weatherData.current.temp}</div>
-        <div className="f">{(weatherData.current.temp * 9) / 5 + 32}</div>
+        <div className="candf">
+          {weatherData.current.temp.toFixed(2)}C /{" "}
+          {((weatherData.current.temp * 9) / 5 + 32).toFixed(2)}F
+        </div>
         <div className="description">
           {weatherData.current.weather[0].description}
         </div>
+      </div>
+      <div className="cityChose">
+        <button className="cityButton">current</button>
+        <button className="cityButton">hanoi</button>
+        <button className="cityButton">paris</button>
+        <button className="cityButton">new york</button>
+        <button className="cityButton">seoul</button>
       </div>
     </div>
   );
