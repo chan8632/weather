@@ -1499,8 +1499,8 @@ function App() {
   ) : (
     <div>
       <div className="container">
-        <WeatherBox />
-          <WeatherButton cities={cities} />
+        <WeatherBox weatherData={weatherData} />
+        <WeatherButton cities={cities} />
       </div>
     </div>
   );
