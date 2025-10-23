@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import WeatherBox from "./components/WeatherBox";
+import WeatherButton from "./components/WeatherButton";
 const TestData = {
   lat: 37.7192,
   lon: 126.7466,
@@ -1494,23 +1496,10 @@ function App() {
   return loading ? (
     "loading"
   ) : (
-    <div className="container">
-      <div className="weatherDashboard">
-        <div className="timezone">{weatherData.timezone}</div>
-        <div className="candf">
-          {weatherData.current.temp.toFixed(2)}C /{" "}
-          {((weatherData.current.temp * 9) / 5 + 32).toFixed(2)}F
-        </div>
-        <div className="description">
-          {weatherData.current.weather[0].description}
-        </div>
-      </div>
-      <div className="cityChose">
-        <button className="cityButton">current</button>
-        <button className="cityButton">hanoi</button>
-        <button className="cityButton">paris</button>
-        <button className="cityButton">new york</button>
-        <button className="cityButton">seoul</button>
+    <div >
+      <div className="container">
+        <WeatherBox />
+        <WeatherButton />
       </div>
     </div>
   );
