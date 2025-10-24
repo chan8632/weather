@@ -1,10 +1,9 @@
-import React from "react";
 import { Button } from "react-bootstrap";
 const WeatherButton = ({ cities, getCity, selectedCity }) => {
   return (
     <div className="cityChose">
       <Button
-        variant={selectedCity === "" ? "outline-warning" : "warning"}
+        variant={selectedCity === "current" ? "outline-warning" : "warning"}
         className="cityButton"
         onClick={() => getCity("current")}
       >
