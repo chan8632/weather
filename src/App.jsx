@@ -5,7 +5,7 @@ import WeatherButton from "./components/WeatherButton";
 function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("current");
   const cities = ["hanoi", "paris", "new york", "seoul"];
   const getCity = (city) => {
     setCity(city);
@@ -42,7 +42,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (city === "") {
+    if (city === "current") {
       getCurrentLocation();
     } else {
       getWeatherByCity(city);

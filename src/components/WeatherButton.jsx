@@ -6,7 +6,7 @@ const WeatherButton = ({ cities, getCity, selectedCity }) => {
       <Button
         variant={selectedCity === "" ? "outline-warning" : "warning"}
         className="cityButton"
-        onClick={() => getCity("")}
+        onClick={() => getCity("current")}
       >
         current
       </Button>
