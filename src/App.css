@@ -25,25 +25,37 @@ body {
 }
 .weatherDashboard {
   padding: 30px;
-  background: gray;
   border-radius: 10px;
   margin-bottom: 30px;
 }
-.cityName {
-  text-align: center;
+.weatherDashboard.bg-clear-sky {
+  background: rgba(255, 255, 255, 0.25); /* 25% 불투명도의 흰색 */
+  backdrop-filter: blur(10px); /* 배경 흐림 효과 (유리 느낌) */
+  border: 1px solid rgba(255, 255, 255, 0.18); /* 옅은 테두리 */
 }
-.candf {
-  color: green;
+.weatherDashboard.bg-clear-sky .cityName {
+  text-align: center;
+  color: #112a46; /* 짙은 남색 */
+  font-weight: 600; /* 조금 더 굵게 */
+}
+
+.weatherDashboard.bg-clear-sky .candf {
+  color: #1e3a5f; /* 남색 */
   text-align: center;
   font-size: 35px;
 }
-.description {
-  color: skyblue;
+.weatherDashboard.bg-clear-sky .description {
+  color: #335d92; /* 옅은 남색 */
   text-align: center;
   font-size: 25px;
 }
-.cityChose {
-  background: black;
+
+.cityChose.bg-clear-sky {
+  background: rgba(0, 0, 0, 0.2); /* 20% 불투명도의 검은색 */
+  backdrop-filter: blur(10px); /* 배경 흐림 효과 */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* 옅은 흰색 테두리 */
+
+  /* --- 나머지 스타일은 유지 --- */
   padding: 15px 30px;
   border-radius: 40px;
   display: flex;
@@ -52,38 +64,250 @@ body {
   gap: 30px;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
+/* --- 도시 선택 버튼 (기본) --- */
+.cityChose.bg-clear-sky .city-button {
+  background: rgba(255, 255, 255, 0.4); /* 반투명 흰색 배경 (기본) */
+  border: 1px solid transparent; /* 테두리는 투명하게 (자리 차지) */
+  border-radius: 20px; /* 둥근 모서리 */
+  padding: 10px 20px;
+
+  color: #1e3a5f; /* 짙은 남색 텍스트 (가독성) */
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.weatherDashboard {
-  padding: 30px;
-  background: gray;
-  border-radius: 10px;
-  margin-bottom: 30px;
+
+/* --- 마우스를 올렸을 때 --- */
+.cityChose.bg-clear-sky .city-button:hover {
+  background: rgba(255, 255, 255, 0.7); /* 더 밝은 흰색 */
 }
-.cityName {
+
+/* --- "선택된" 버튼 스타일 --- */
+.cityChose.bg-clear-sky .city-button.selected {
+  background: rgba(30, 58, 95, 0.85);
+
+  color: #ffffff; /* ★ 흰색 텍스트로 변경 */
+  font-weight: 700; /* 굵게 */
+
+  /* 테두리도 밝은 색으로 변경 */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================= */
+/* --- 흐린 날 (bg-cloudy) 테마 --- */
+/* ============================================= */
+
+/* --- 날씨 정보창 (WeatherBox) --- */
+.weatherDashboard.bg-cloudy {
+  /* 어두운 유리 효과 */
+  background: rgba(50, 50, 70, 0.3); 
+  backdrop-filter: blur(10px);
+  /* 밝은 테두리 */
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+/* --- 날씨 정보창 텍스트 (밝은 색) --- */
+.weatherDashboard.bg-cloudy .cityName {
   text-align: center;
+  color: #ffffff; /* 흰색 */
+  font-weight: 600;
 }
-.candf {
-  color: green;
+
+.weatherDashboard.bg-cloudy .candf {
+  color: #f0f0f0; /* 밝은 회색 */
   text-align: center;
   font-size: 35px;
 }
-.description {
-  color: skyblue;
+.weatherDashboard.bg-cloudy .description {
+  color: #b0c4de; /* 밝은 스틸 블루 */
   text-align: center;
   font-size: 25px;
 }
-.cityChose {
-  background: black;
+
+/* --- 버튼 컨테이너 (cityChose) --- */
+.cityChose.bg-cloudy {
+  /* 더 어두운 유리 효과 */
+  background: rgba(0, 0, 0, 0.3); 
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* --- 나머지 스타일은 유지 --- */
   padding: 15px 30px;
   border-radius: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 30px;
+}
+
+/* --- 도시 선택 버튼 (기본) --- */
+.cityChose.bg-cloudy .city-button {
+  background: rgba(80, 80, 90, 0.5); /* 어두운 회색 유리 */
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 10px 20px;
+
+  color: #ffffff; /* ★ 밝은 텍스트 (기본) */
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* --- 마우스를 올렸을 때 --- */
+.cityChose.bg-cloudy .city-button:not(.selected):hover {
+  background: rgba(100, 100, 110, 0.7); /* 조금 더 밝은 회색 유리 */
+}
+
+/* --- "선택된" 버튼 스타일 (★ 색상 반전) --- */
+.cityChose.bg-cloudy .city-button.selected {
+  background: rgba(230, 230, 240, 0.9); /* ★ 밝은 배경 */
+  color: #1E3A5F; /* ★ 어두운 텍스트 */
+  font-weight: 700;
+  border: 1px solid rgba(230, 230, 240, 0.9);
+}
+
+/* ============================================= */
+/* --- 비 오는 날 (bg-rain) 테마 --- */
+/* ============================================= */
+
+/* --- 날씨 정보창 (WeatherBox) --- */
+.weatherDashboard.bg-rain {
+  /* 어둡고 푸른 유리 효과 */
+  background: rgba(40, 60, 80, 0.35); 
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+/* --- 날씨 정보창 텍스트 (밝은 색) --- */
+.weatherDashboard.bg-rain .cityName {
+  text-align: center;
+  color: #ffffff; /* 흰색 */
+  font-weight: 600;
+}
+
+.weatherDashboard.bg-rain .candf {
+  color: #f0f0f0; /* 밝은 회색 */
+  text-align: center;
+  font-size: 35px;
+}
+.weatherDashboard.bg-rain .description {
+  color: #90c8e0; /* 비 느낌의 밝은 하늘색 */
+  text-align: center;
+  font-size: 25px;
+}
+
+/* --- 버튼 컨테이너 (cityChose) --- */
+.cityChose.bg-rain {
+  /* 더 어둡고 푸른 유리 효과 */
+  background: rgba(20, 30, 40, 0.3); 
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* --- 나머지 스타일은 유지 --- */
+  padding: 15px 30px;
+  border-radius: 40px;
+  display: flex;
+  align: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* --- 도시 선택 버튼 (기본) --- */
+.cityChose.bg-rain .city-button {
+  background: rgba(70, 90, 110, 0.5); /* 어두운 파란 회색 유리 */
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 10px 20px;
+
+  color: #ffffff; /* ★ 밝은 텍스트 (기본) */
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* --- 마우스를 올렸을 때 --- */
+.cityChose.bg-rain .city-button:not(.selected):hover {
+  background: rgba(90, 110, 130, 0.7); /* 조금 더 밝은 파란 회색 유리 */
+}
+
+/* --- "선택된" 버튼 스타일 (★ 색상 반전) --- */
+.cityChose.bg-rain .city-button.selected {
+  background: rgba(173, 216, 230, 0.9); /* ★ 밝은 하늘색 배경 (비 색깔) */
+  color: #1E3A5F; /* ★ 어두운 텍스트 */
+  font-weight: 700;
+  border: 1px solid rgba(173, 216, 230, 0.9);
+}
+
+/* ============================================= */
+/* --- 기본 (bg-default) 테마 --- */
+/* (clear-sky 테마와 동일한 디자인) */
+/* ============================================= */
+
+/* --- 날씨 정보창 (WeatherBox) --- */
+.weatherDashboard.bg-default {
+  background: rgba(255, 255, 255, 0.25); /* 25% 불투명도의 흰색 */
+  backdrop-filter: blur(10px); /* 배경 흐림 효과 (유리 느낌) */
+  border: 1px solid rgba(255, 255, 255, 0.18); /* 옅은 테두리 */
+}
+
+/* --- 날씨 정보창 텍스트 (어두운 색) --- */
+.weatherDashboard.bg-default .cityName {
+  text-align: center;
+  color: #112a46; /* 짙은 남색 */
+  font-weight: 600;
+}
+.weatherDashboard.bg-default .candf {
+  color: #1e3a5f; /* 남색 */
+  text-align: center;
+  font-size: 35px;
+}
+.weatherDashboard.bg-default .description {
+  color: #335d92; /* 옅은 남색 */
+  text-align: center;
+  font-size: 25px;
+}
+
+/* --- 버튼 컨테이너 (cityChose) --- */
+.cityChose.bg-default {
+  background: rgba(0, 0, 0, 0.2); /* 20% 불투명도의 검은색 */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* --- 나머지 스타일은 유지 --- */
+  padding: 15px 30px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* --- 도시 선택 버튼 (기본) --- */
+.cityChose.bg-default .city-button {
+  background: rgba(255, 255, 255, 0.4); /* 반투명 흰색 배경 (기본) */
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 10px 20px;
+
+  color: #1e3a5f; /* 짙은 남색 텍스트 */
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* --- 마우스를 올렸을 때 --- */
+.cityChose.bg-default .city-button:not(.selected):hover {
+  background: rgba(255, 255, 255, 0.7); /* 더 밝은 흰색 */
+}
+
+/* --- "선택된" 버튼 스타일 --- */
+.cityChose.bg-default .city-button.selected {
+  background: rgba(30, 58, 95, 0.85); /* 짙은 남색 배경 */
+  color: #ffffff; /* 흰색 텍스트 */
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }

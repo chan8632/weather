@@ -1,23 +1,22 @@
-import { Button } from "react-bootstrap";
-const WeatherButton = ({ cities, getCity, selectedCity }) => {
+const WeatherButton = ({ cities, getCity, selectedCity, bgClass }) => {
   return (
-    <div className="cityChose">
-      <Button
-        variant={selectedCity === "current" ? "outline-warning" : "warning"}
-        className="cityButton"
+    <div className={`cityChose ${bgClass}`}>
+      <button
+        className={`city-button ${
+          selectedCity === "current" ? "selected" : ""
+        }`}
         onClick={() => getCity("current")}
       >
         current
-      </Button>
+      </button>
       {cities.map((city, idx) => (
-        <Button
-          variant={selectedCity === city ? "outline-warning" : "warning"}
+        <button
           onClick={() => getCity(city)}
-          className="cityButton"
+          className={`city-button ${selectedCity === city ? "selected" : ""}`}
           key={idx}
         >
           {city}
-        </Button>
+        </button>
       ))}
     </div>
   );

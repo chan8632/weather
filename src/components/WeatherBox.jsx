@@ -1,14 +1,11 @@
 import React from "react";
 
-const WeatherBox = ({ weatherData }) => {
-  
-  
+const WeatherBox = ({ weatherData, bgClass }) => {
   return (
-    <div className="weatherDashboard">
+    <div className={`weatherDashboard ${bgClass}`}>
       <div className="cityName">{weatherData?.name}</div>
       <div className="candf">
-        {weatherData?.main.temp.toFixed(2)}C /
-        {((weatherData?.main.temp * 9) / 5 + 32).toFixed(2)}F
+        {weatherData?.main.temp.toFixed(2)}C / {((weatherData?.main.temp * 9) / 5 + 32).toFixed(2)}F
       </div>
       <div className="description">{weatherData?.weather[0].description}</div>
     </div>
