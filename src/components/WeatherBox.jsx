@@ -2,7 +2,6 @@ import React from "react";
 
 const WeatherBox = ({ weatherData }) => {
   
-    console.log(weatherData);
   
   return (
     <div className="weatherDashboard">

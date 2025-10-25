@@ -1,11 +1,23 @@
 body {
-  background-image: url("https://t1.daumcdn.net/brunch/service/user/2KFW/image/ASyBfni9TJ1SoXbrHlHRMI7S_xU.jpg");
+  background-image: url("./assets/default.png");
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
 }
+.bg-deault {
+  background-image: url("./assets/default.png");
+}
+.bg-clear-sky {
+  background-image: url("./assets/clearSky.png");
+}
+.bg-rain {
+  background-image: url("./assets/rain.png");
+}
+.bg-cloudy {
+  background-image: url("./assets/cloudy.png");
+}
 .container {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -40,9 +52,8 @@ body {
   gap: 30px;
 }
 
-
 .container {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -76,4 +87,3 @@ body {
   justify-content: center;
   gap: 30px;
 }
-
